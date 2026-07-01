@@ -1,0 +1,39 @@
+---
+const upgrades = [
+  { name: "Kioto Esencial", price: "$2,490 MXN" },
+  { name: "Nara, Kobe e Himeji", price: "$3,150 MXN" },
+  { name: "Show de Sumo y Cena Chanko Nabe", price: "$1,890 MXN" },
+  { name: "Experiencia Wakayama", price: "$2,200 MXN" },
+  { name: "El Sagrado Monte Fuji", price: "$1,950 MXN" }
+];
+---
+
+<section class="py-24 bg-gray-900 text-white overflow-hidden relative">
+  <!-- Decorative Background -->
+  <div class="absolute top-0 right-0 w-96 h-96 bg-japan-red/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
+  <div class="absolute bottom-0 left-0 w-96 h-96 bg-japan-coral/5 rounded-full blur-3xl -ml-48 -mb-48"></div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-bold mb-4 uppercase tracking-tight">
+        HAZ TU VIAJE TODAVÍA <span class="text-japan-red">MÁS TUYO</span>
+      </h2>
+      <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
+        Elige las experiencias premium que quieras sumar a tu itinerario.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      {upgrades.map(item => (
+        <div class="bg-gray-800/50 backdrop-blur-sm p-8 rounded-3xl border border-white/10 hover:border-japan-red transition-all group">
+          <h3 class="text-xl font-bold mb-4 group-hover:text-japan-red transition-colors">{item.name}</h3>
+          <p class="text-3xl font-bold text-japan-coral">{item.price}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-center mt-12 text-gray-500 text-sm italic">
+      Nota: Los precios en pesos son informativos y calculados bajo el tipo de cambio vigente al momento de su liquidación.
+    </p>
+  </div>
+</section>

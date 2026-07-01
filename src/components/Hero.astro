@@ -1,0 +1,52 @@
+---
+---
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gray-950 text-white py-20 px-4">
+  <!-- Background Pattern/Image Placeholder -->
+  <div class="absolute inset-0 z-0 opacity-40">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-950"></div>
+    <!-- Here we would ideally have a high-quality photo of Japan in Autumn -->
+    <div class="w-full h-full bg-[url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"></div>
+  </div>
+
+  <div class="container mx-auto relative z-10 text-center max-w-4xl">
+    <span class="inline-block px-4 py-1 mb-6 text-sm font-semibold tracking-widest uppercase border border-japan-coral rounded-full text-japan-coral animate-fade-in">
+      JAPÓN A TU ALCANCE 2026
+    </span>
+    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+      EL OTOÑO MÁS ESPECTACULAR DE <span class="text-japan-red">JAPÓN</span> A TU ALCANCE
+    </h1>
+    <p class="text-xl md:text-2xl mb-4 text-gray-300">
+      10 días / 7 noches · Salida única: 15 de noviembre de 2026.
+    </p>
+    <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-8">
+      <div class="bg-white/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/20">
+        <span class="block text-sm text-gray-400 uppercase">Precio desde</span>
+        <span class="text-3xl font-bold">$58,300 MXN</span>
+        <span class="block text-xs text-gray-400">(Por persona en habitación doble)</span>
+      </div>
+      <div class="bg-japan-red px-6 py-3 rounded-2xl shadow-xl shadow-japan-red/20">
+        <span class="block text-sm text-white/80 uppercase font-semibold">Aparta hoy con solo</span>
+        <span class="text-3xl font-bold text-white">$5,500 MXN</span>
+      </div>
+    </div>
+    
+    <div class="space-y-4">
+      <a href="#formulario-contacto" class="inline-block bg-japan-red hover:bg-red-700 text-white font-bold py-4 px-10 rounded-full text-xl transition-all hover:scale-105 active:scale-95 shadow-lg shadow-japan-red/30">
+        Quiero conocer Japón
+      </a>
+      <p class="text-sm text-gray-400">
+        Cupo limitado · Atención antes y durante el viaje
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+</style>

@@ -1,0 +1,50 @@
+---
+const faqs = [
+  {
+    q: "¿Se necesita visa para viajar a Japón como mexicano?",
+    a: "No, actualmente los ciudadanos mexicanos no requieren visa para estancias de turismo de hasta 90 días. Solo necesitas tu pasaporte vigente y el registro Visit Japan Web (QR) que nosotros gestionamos por ti."
+  },
+  {
+    q: "¿Cómo funcionan los pagos mensuales?",
+    a: "Ofrecemos un plan de pagos flexibles. Una vez realizado el apartado de $5,500 MXN, puedes ir liquidando el resto de tu viaje en mensualidades cómodas hasta 45 días antes de la salida."
+  },
+  {
+    q: "¿Qué pasa si viajo solo o sola?",
+    a: "¡Eres bienvenido/a! Muchos de nuestros viajeros van solos. El precio publicado es por persona en habitación doble compartida (te asignamos un compañero/a del mismo sexo). Si prefieres habitación privada, hay un suplemento adicional."
+  },
+  {
+    q: "¿El coordinador nos acompaña a las actividades opcionales?",
+    a: "El coordinador está disponible para orientarte y apoyarte en la logística. Algunas experiencias premium pueden incluir guías locales especializados además del coordinador."
+  },
+  {
+    q: "¿Cómo nos comunicamos allá? ¿El idioma es una barrera?",
+    a: "El idioma no será un problema. Tu coordinador habla español y te ayudará con las traducciones necesarias. Además, te daremos tips sobre apps de traducción y conectividad."
+  }
+];
+---
+
+<section class="py-24 bg-white">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 uppercase tracking-tight">
+      PREGUNTAS <span class="text-japan-red">FRECUENTES</span>
+    </h2>
+
+    <div class="space-y-4">
+      {faqs.map(faq => (
+        <details class="group bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden transition-all duration-300 open:ring-2 open:ring-japan-red/20">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-lg md:text-xl">
+            {faq.q}
+            <span class="transition-transform duration-300 group-open:rotate-180">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-japan-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </span>
+          </summary>
+          <div class="px-6 pb-6 text-gray-600 leading-relaxed">
+            {faq.a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

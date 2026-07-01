@@ -1,0 +1,124 @@
+---
+---
+<section id="formulario-contacto" class="py-24 bg-japan-red text-white">
+  <div class="container mx-auto px-4">
+    <div class="max-w-5xl mx-auto bg-white text-gray-900 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col md:flex-row">
+      <!-- Image/Context Side -->
+      <div class="md:w-5/12 bg-gray-100 relative">
+        <img 
+          src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop" 
+          alt="Japón Itinerario" 
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-japan-red/20"></div>
+        <div class="absolute inset-0 p-12 flex flex-col justify-end text-white">
+          <h3 class="text-3xl font-bold mb-4">Tu viaje empieza aquí</h3>
+          <p class="text-white/90">Nuestro equipo de expertos se pondrá en contacto contigo para resolver todas tus dudas.</p>
+        </div>
+      </div>
+
+      <!-- Form Side -->
+      <div class="md:w-7/12 p-8 md:p-16">
+        <div class="mb-10">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+            CONOCE CADA DETALLE DE TU VIAJE DÍA POR DÍA
+          </h2>
+          <p class="text-gray-600">
+            Completa el formulario para descargar el itinerario completo en PDF y asegurar la preventa de tu lugar.
+          </p>
+        </div>
+
+        <form id="lead-form" class="space-y-6">
+          <div class="space-y-2">
+            <label for="name" class="text-sm font-bold uppercase tracking-wider text-gray-500">Nombre completo</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              placeholder="Ej. Juan Pérez" 
+              required
+              class="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-200 focus:border-japan-red focus:ring-4 focus:ring-japan-red/10 outline-none transition-all"
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label for="phone" class="text-sm font-bold uppercase tracking-wider text-gray-500">Teléfono / WhatsApp</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              placeholder="+52 123 456 7890" 
+              required
+              class="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-200 focus:border-japan-red focus:ring-4 focus:ring-japan-red/10 outline-none transition-all"
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label for="email" class="text-sm font-bold uppercase tracking-wider text-gray-500">Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              placeholder="tu@correo.com" 
+              required
+              class="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-200 focus:border-japan-red focus:ring-4 focus:ring-japan-red/10 outline-none transition-all"
+            />
+          </div>
+
+          <button 
+            type="submit" 
+            class="w-full bg-japan-red hover:bg-red-700 text-white font-bold py-5 rounded-2xl text-xl shadow-xl shadow-japan-red/20 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3"
+          >
+            <span>Descargar itinerario PDF</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </button>
+          
+          <p id="form-status" class="text-center text-sm font-medium hidden"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('lead-form');
+  const status = document.getElementById('form-status');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = Object.fromEntries(formData);
+
+    if (status) {
+      status.textContent = 'Enviando...';
+      status.className = 'text-center text-sm font-medium text-blue-600';
+      status.classList.remove('hidden');
+    }
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        if (status) {
+          status.textContent = '¡Gracias! Tu itinerario se está descargando.';
+          status.className = 'text-center text-sm font-medium text-green-600';
+        }
+        (e.target as HTMLFormElement).reset();
+        // Here you would typically trigger the PDF download
+      } else {
+        throw new Error();
+      }
+    } catch (err) {
+      if (status) {
+        status.textContent = 'Hubo un error. Por favor intenta de nuevo.';
+        status.className = 'text-center text-sm font-medium text-red-600';
+      }
+    }
+  });
+</script>

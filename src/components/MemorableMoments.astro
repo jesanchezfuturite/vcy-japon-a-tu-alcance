@@ -1,0 +1,48 @@
+---
+const moments = [
+  {
+    title: "El túnel sagrado de Kioto",
+    desc: "Cruzarás a pie los miles de arcos torii de color rojo brillante en Fushimi Inari y caminarás bajo el imponente bosque de bambú gigante en Arashiyama.",
+    image: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
+    title: "El pulso eléctrico de Osaka",
+    desc: "Recorrerás el famoso canal de Dotonbori rodeado de pantallas de neón gigantes mientras disfrutas de auténtico takoyaki caliente en Shinsaibashi.",
+    image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
+    title: "Los dos rostros de Tokio",
+    desc: "Pasarás de la tranquilidad mística de un templo antiguo en Asakusa al dinamismo del cruce peatonal más famoso, transitado e iluminado del mundo en Shibuya.",
+    image: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=2070&auto=format&fit=crop"
+  }
+];
+---
+
+<section class="py-24 bg-white overflow-hidden">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 uppercase tracking-tight">
+      LOS MOMENTOS QUE <span class="text-japan-red">RECORDARÁS</span> PARA SIEMPRE
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {moments.map(moment => (
+        <div class="group">
+          <div class="relative h-[450px] rounded-3xl overflow-hidden mb-6">
+            <img 
+              src={moment.image} 
+              alt={moment.title} 
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <h3 class="text-2xl font-bold text-white mb-2">{moment.title}</h3>
+            </div>
+          </div>
+          <p class="text-gray-600 leading-relaxed">
+            {moment.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

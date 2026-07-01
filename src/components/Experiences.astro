@@ -1,0 +1,67 @@
+---
+const experiences = [
+  {
+    title: "Ver Tokio iluminado de noche.",
+    image: "https://images.unsplash.com/photo-1540959733332-e94e270b2d42?q=80&w=2070&auto=format&fit=crop",
+    desc: "Experimenta el vibrante pulso de la metrópoli desde las alturas."
+  },
+  {
+    title: "Explorar templos antiguos en Asakusa.",
+    image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=2070&auto=format&fit=crop",
+    desc: "Sumérgete en la historia y espiritualidad del templo Senso-ji."
+  },
+  {
+    title: "Pisar las líneas blancas del cruce de Shibuya.",
+    image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=2070&auto=format&fit=crop",
+    desc: "Sé parte de la marea humana en el cruce más famoso del mundo."
+  },
+  {
+    title: "Cruzar los miles de toriis rojos de Fushimi Inari.",
+    image: "https://images.unsplash.com/photo-1475947176885-dd2468ef2c9a?q=80&w=2067&auto=format&fit=crop",
+    desc: "Un camino místico a través de miles de puertas sagradas."
+  },
+  {
+    title: "Ver montañas desde la ventana del tren bala Nozomi.",
+    image: "https://images.unsplash.com/photo-1511210165207-63a56e72c05f?q=80&w=2070&auto=format&fit=crop",
+    desc: "Atraviesa el paisaje japonés a la velocidad del futuro."
+  }
+];
+---
+
+<section class="py-24 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-5xl font-bold text-center mb-20 uppercase tracking-tight">
+      NO SE TRATA SOLO DE CONOCER JAPÓN, <br class="hidden md:block" />
+      <span class="text-japan-red">SE TRATA DE:</span>
+    </h2>
+
+    <div class="space-y-32">
+      {experiences.map((exp, index) => (
+        <div class={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 lg:gap-20`}>
+          <div class="flex-1 space-y-6">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-japan-red text-white font-bold text-xl mb-4 shadow-lg shadow-japan-red/20">
+              {index + 1}
+            </div>
+            <h3 class="text-3xl lg:text-4xl font-bold leading-tight">
+              {exp.title}
+            </h3>
+            <p class="text-gray-600 text-lg">
+              {exp.desc}
+            </p>
+            <div class="h-1 w-20 bg-japan-red rounded-full"></div>
+          </div>
+          <div class="flex-1 w-full">
+            <div class="relative group">
+              <div class="absolute -inset-4 bg-japan-coral opacity-10 rounded-2xl group-hover:opacity-20 transition-opacity"></div>
+              <img 
+                src={exp.image} 
+                alt={exp.title} 
+                class="relative rounded-2xl shadow-2xl w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+              />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
