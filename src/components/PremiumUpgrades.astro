@@ -1,10 +1,10 @@
 ---
 const upgrades = [
-  { name: "Kioto Esencial", price: "$2,490 MXN" },
-  { name: "Nara, Kobe e Himeji", price: "$3,150 MXN" },
-  { name: "Show de Sumo y Cena Chanko Nabe", price: "$1,890 MXN" },
-  { name: "Experiencia Wakayama", price: "$2,200 MXN" },
-  { name: "El Sagrado Monte Fuji", price: "$1,950 MXN" }
+  { name: "Kioto Esencial", price: "$2,490 MXN", image: "/images/tunel-sagrado.webp" },
+  { name: "Nara, Kobe e Himeji", price: "$3,150 MXN", image: "/images/templo-antiguo.webp" },
+  { name: "Show de Sumo y Cena Chanko Nabe", price: "$1,890 MXN", image: "/images/chanko.webp" },
+  { name: "Experiencia Wakayama", price: "$2,200 MXN", image: "/images/wakayama.webp" },
+  { name: "El Sagrado Monte Fuji", price: "$1,950 MXN", image: "/images/fuji.webp" }
 ];
 ---
 
@@ -25,9 +25,14 @@ const upgrades = [
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
       {upgrades.map(item => (
-        <div class="bg-gray-800/50 backdrop-blur-sm p-8 rounded-3xl border border-white/10 hover:border-japan-red transition-all group">
-          <h3 class="text-xl font-bold mb-4 group-hover:text-japan-red transition-colors">{item.name}</h3>
-          <p class="text-3xl font-bold text-japan-coral">{item.price}</p>
+        <div class="bg-gray-800/50 backdrop-blur-sm rounded-3xl border border-white/10 hover:border-japan-red transition-all group overflow-hidden flex flex-col">
+          <div class="h-40 overflow-hidden opacity-60 group-hover:opacity-100 transition-opacity">
+            <img src={item.image} alt={item.name} class="w-full h-full object-cover" />
+          </div>
+          <div class="p-8">
+            <h3 class="text-xl font-bold mb-4 group-hover:text-japan-red transition-colors">{item.name}</h3>
+            <p class="text-3xl font-bold text-japan-coral">{item.price}</p>
+          </div>
         </div>
       ))}
     </div>

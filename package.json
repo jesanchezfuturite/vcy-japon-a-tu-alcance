@@ -19,5 +19,10 @@
   },
   "devDependencies": {
     "esbuild": "^0.28.1"
+  },
+  "overrides": {
+    "@astrojs/tailwind": {
+      "astro": "$astro"
+    }
   }
 }
