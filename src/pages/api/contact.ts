@@ -53,7 +53,10 @@ export const POST: APIRoute = async ({ request }) => {
       },
       body: JSON.stringify({
         sender: { name: 'VCY Japón', email: 'noreply@futurite.info' },
-        to: [{ email: 'dev@futurite.com', name: 'Admin' }],
+        to: [
+          { email: 'dev@futurite.com', name: 'Admin' },
+          { email: 'ventas@viajacomoyo.net', name: 'Ventas' }
+        ],
         subject: 'Nuevo Lead: Japón a tu Alcance 2026',
         htmlContent: `
           <html>
