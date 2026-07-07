@@ -11,17 +11,17 @@ const experiences = [
     desc: "Sumérgete en la historia y espiritualidad del templo Senso-ji."
   },
   {
-    title: "Pisar las líneas blancas del cruce de Shibuya.",
+    title: "Pisar las líneas blancas del cruce <br /> de Shibuya.",
     image: "/images/shibuya.webp",
     desc: "Sé parte de la marea humana en el cruce más famoso del mundo."
   },
   {
-    title: "Cruzar los miles de toriis rojos de Fushimi Inari.",
+    title: "Cruzar los miles de toriis rojos <br /> de Fushimi Inari.",
     image: "/images/fushimi.webp",
     desc: "Un camino místico a través de miles de puertas sagradas."
   },
   {
-    title: "Ver montañas desde la ventana del tren bala Nozomi.",
+    title: "Ver montañas desde la ventana <br /> del tren bala Nozomi.",
     image: "/images/nozomi.webp",
     desc: "Atraviesa el paisaje japonés a la velocidad del futuro."
   }
@@ -31,8 +31,7 @@ const experiences = [
 <section class="py-24 bg-white">
   <div class="container mx-auto px-4">
     <h2 class="text-3xl md:text-5xl font-bold text-center mb-20 uppercase tracking-tight">
-      NO SE TRATA SOLO DE CONOCER JAPÓN, <br class="hidden md:block" />
-      <span class="text-japan-red">SE TRATA DE:</span>
+      NO SE TRATA SOLO DE CONOCER JAPÓN, <span class="text-japan-red">SE TRATA DE:</span>
     </h2>
 
     <div class="space-y-32">
@@ -42,9 +41,7 @@ const experiences = [
             <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-japan-red text-white font-bold text-xl mb-4 shadow-lg shadow-japan-red/20">
               {index + 1}
             </div>
-            <h3 class="text-3xl lg:text-4xl font-bold leading-tight">
-              {exp.title}
-            </h3>
+            <h3 class="text-3xl lg:text-4xl font-bold leading-tight" set:html={exp.title} />
             <p class="text-gray-600 text-lg">
               {exp.desc}
             </p>
