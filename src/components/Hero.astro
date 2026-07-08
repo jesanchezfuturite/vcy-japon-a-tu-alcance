@@ -1,6 +1,6 @@
 ---
 ---
-<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gray-950 text-white py-20 px-4">
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gray-950 text-white py-12 md:py-20 px-4">
   <!-- Background Pattern/Image Placeholder -->
   <div class="absolute inset-0 z-0 opacity-40">
     <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-950"></div>
@@ -8,7 +8,18 @@
     <div class="w-full h-full bg-[url('/images/tokyo-noche.webp')] bg-cover bg-center"></div>
   </div>
 
+
+
   <div class="container mx-auto relative z-10 text-center max-w-5xl">
+    <!-- Logo (Mobile) -->
+    <div class="flex justify-center mb-6 md:hidden relative z-20">
+      <img src="/images/vcy-logo-bco.png" alt="VCY Viajes Logo" class="h-28 w-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]" />
+    </div>
+
+    <!-- Logo (Desktop) -->
+    <div class="absolute -top-12 lg:-top-12 left-12 lg:left-20 z-20 hidden md:block">
+      <img src="/images/vcy-logo-bco.png" alt="VCY Viajes Logo" class="h-32 lg:h-48 w-auto transition-all duration-500 drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]" />
+    </div>
     <span class="inline-block px-4 py-1 mb-6 text-sm font-semibold tracking-widest uppercase border border-japan-coral rounded-full text-japan-coral animate-fade-in">
       JAPÓN A TU ALCANCE 2026
     </span>
