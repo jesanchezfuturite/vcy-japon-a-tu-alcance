@@ -33,9 +33,9 @@ const itinerary = [
       TU <span class="text-japan-red">ITINERARIO</span> EN UNA SOLA MIRADA
     </h2>
 
-    <div class="flex overflow-x-auto pb-12 gap-6 snap-x snap-mandatory no-scrollbar px-4 -mx-4 md:mx-0 md:px-0">
+    <div id="itinerary-slider" class="flex overflow-x-auto pb-12 gap-6 snap-x snap-mandatory no-scrollbar px-4 -mx-4 md:mx-0 md:px-0 scroll-smooth">
       {itinerary.map(item => (
-        <div class="min-w-[85vw] md:min-w-[400px] bg-white rounded-3xl overflow-hidden shadow-xl snap-center border border-gray-100 flex flex-col group hover:border-japan-red transition-colors">
+        <div class="shrink-0 w-[85vw] md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] bg-white rounded-3xl overflow-hidden shadow-xl snap-center border border-gray-100 flex flex-col group hover:border-japan-red transition-colors">
           <div class="h-48 overflow-hidden">
             <img src={item.image} alt={item.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
           </div>
@@ -61,11 +61,11 @@ const itinerary = [
       ))}
     </div>
     
-    <div class="text-center mt-4 text-gray-400 text-sm md:hidden">
-      Desliza para ver más →
-    </div>
+
   </div>
 </section>
+
+
 
 <style>
   .no-scrollbar::-webkit-scrollbar {
