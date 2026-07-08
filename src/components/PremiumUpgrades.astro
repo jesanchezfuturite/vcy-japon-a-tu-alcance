@@ -23,18 +23,33 @@ const upgrades = [
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-      {upgrades.map(item => (
-        <div class="bg-gray-800/50 backdrop-blur-sm rounded-3xl border border-white/10 hover:border-japan-red transition-all group overflow-hidden flex flex-col">
-          <div class="h-40 overflow-hidden opacity-60 group-hover:opacity-100 transition-opacity">
-            <img src={item.image} alt={item.name} class="w-full h-full object-cover" />
+    <div class="relative max-w-6xl mx-auto">
+      <div id="upgrades-slider" class="flex overflow-x-auto gap-6 snap-x snap-mandatory no-scrollbar scroll-smooth pb-4">
+        {upgrades.map(item => (
+          <div class="shrink-0 w-[85vw] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-gray-800/50 backdrop-blur-sm rounded-3xl border border-white/10 hover:border-japan-red transition-all group overflow-hidden flex flex-col snap-start">
+            <div class="h-40 overflow-hidden opacity-60 group-hover:opacity-100 transition-opacity">
+              <img src={item.image} alt={item.name} class="w-full h-full object-cover" />
+            </div>
+            <div class="p-8">
+              <h3 class="text-xl font-bold mb-4 group-hover:text-japan-red transition-colors">{item.name}</h3>
+              <p class="text-3xl font-bold text-japan-coral">{item.price}</p>
+            </div>
           </div>
-          <div class="p-8">
-            <h3 class="text-xl font-bold mb-4 group-hover:text-japan-red transition-colors">{item.name}</h3>
-            <p class="text-3xl font-bold text-japan-coral">{item.price}</p>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      <div class="flex justify-center gap-4 mt-8">
+        <button id="upgrades-prev" class="w-12 h-12 rounded-full border-2 border-gray-700 flex items-center justify-center text-gray-400 hover:border-japan-red hover:text-japan-red transition-all focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+        <button id="upgrades-next" class="w-12 h-12 rounded-full border-2 border-gray-700 flex items-center justify-center text-gray-400 hover:border-japan-red hover:text-japan-red transition-all focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+      </div>
     </div>
 
     <p class="text-center mt-12 text-gray-500 text-sm italic">
@@ -42,3 +57,28 @@ const upgrades = [
     </p>
   </div>
 </section>
+
+<script>
+  const upgradesSlider = document.getElementById('upgrades-slider');
+  const upgradesPrev = document.getElementById('upgrades-prev');
+  const upgradesNext = document.getElementById('upgrades-next');
+
+  if (upgradesSlider && upgradesPrev && upgradesNext) {
+    upgradesPrev.addEventListener('click', () => {
+      upgradesSlider.scrollBy({ left: -upgradesSlider.clientWidth, behavior: 'smooth' });
+    });
+    upgradesNext.addEventListener('click', () => {
+      upgradesSlider.scrollBy({ left: upgradesSlider.clientWidth, behavior: 'smooth' });
+    });
+  }
+</script>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
