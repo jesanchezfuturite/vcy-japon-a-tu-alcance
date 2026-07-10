@@ -16,8 +16,9 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const BREVO_API_KEY = import.meta.env.BREVO_API_KEY;
+    const N8N_WEBHOOK_URL = import.meta.env.N8N_WEBHOOK_URL;
 
-    if (!BREVO_API_KEY) {
+    if (!BREVO_API_KEY || !N8N_WEBHOOK_URL) {
       return new Response(
         JSON.stringify({ message: 'Error de configuración del servidor' }),
         { status: 500 }
@@ -25,7 +26,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // 1. Create/Update Contact in Brevo
-    await fetch('https://api.brevo.com/v3/contacts', {
+    const contactResponse = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: {
         'accept': 'application/json',
@@ -42,6 +43,15 @@ export const POST: APIRoute = async ({ request }) => {
         updateEnabled: true,
       }),
     });
+
+    if (!contactResponse.ok) {
+      const errorData = await contactResponse.json();
+      console.error('Error de Brevo Contact:', errorData);
+      return new Response(
+        JSON.stringify({ message: 'Error al registrar el contacto' }),
+        { status: 500 }
+      );
+    }
 
     // 2. Send Transactional Email
     const emailResponse = await fetch('https://api.brevo.com/v3/smtp/email', {
@@ -77,6 +87,27 @@ export const POST: APIRoute = async ({ request }) => {
       console.error('Error de Brevo Email:', errorData);
       return new Response(
         JSON.stringify({ message: 'Error al enviar el correo' }),
+        { status: 500 }
+      );
+    }
+
+    // 3. Send Lead to n8n Webhook
+    const webhookResponse = await fetch(N8N_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        nombre: name,
+        telefono: phone,
+        correo: email,
+        origen: 'Japón a tu alcance',
+      }),
+    });
+
+    if (!webhookResponse.ok) {
+      const errorData = await webhookResponse.text();
+      console.error('Error de n8n Webhook:', errorData);
+      return new Response(
+        JSON.stringify({ message: 'Error al enviar el webhook' }),
         { status: 500 }
       );
     }
