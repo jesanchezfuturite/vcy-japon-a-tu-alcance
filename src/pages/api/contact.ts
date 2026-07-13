@@ -25,35 +25,7 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // 1. Create/Update Contact in Brevo
-    const contactResponse = await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {
-        'accept': 'application/json',
-        'api-key': BREVO_API_KEY,
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: email,
-        attributes: {
-          NOMBRE: name,
-          WHATSAPP: phone,
-          ORIGEN: 'Landing Japon 2026'
-        },
-        updateEnabled: true,
-      }),
-    });
-
-    if (!contactResponse.ok) {
-      const errorData = await contactResponse.json();
-      console.error('Error de Brevo Contact:', errorData);
-      return new Response(
-        JSON.stringify({ message: 'Error al registrar el contacto' }),
-        { status: 500 }
-      );
-    }
-
-    // 2. Send Transactional Email
+    // 1. Send Transactional Email
     const emailResponse = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {
@@ -91,7 +63,7 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // 3. Send Lead to n8n Webhook
+    // 2. Send Lead to n8n Webhook
     const webhookResponse = await fetch(N8N_WEBHOOK_URL, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
